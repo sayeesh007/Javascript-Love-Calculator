@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Calculator</title>
+    <style>
+        *{
+            padding: 0;margin: 0;box-sizing: border-box;
+        }
+        body{
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        main{
+            display: flex;flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        h1{
+            margin: 10px;
+        }
+        img{
+            border-radius: 20px;
+            width: 300px;
+            height: 350px;
+        }
+        input{
+            border-radius: 25px;
+            padding: 10px;
+            margin: 5px;
+            width: 100%;
+        }
+        button{
+            border-radius: 25px;
+            padding: 10px;
+            margin: 5px;
+            width: 100px;
+            background-color: rgb(0, 255, 136);
+            border: 1.5px solid black;
+        }
+        button:hover{
+            scale: 1.2;
+            transition: all 400ms ease-in-out;
+        }
+        .result{
+            font-size: 45px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Love Calculator</h1>
+        <img src="https://images.unsplash.com/photo-1527628173875-3c7bfd28ad78?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="LoveImg" width="500px" height="600px">
+        <br>
+        <div class="result">
+
+        </div>
+        <br>
+        <input type="text" id="male-name" placeholder="Your Name">
+        <input type="text" id="female-name" placeholder="Your Partners Name">
+        <button onclick="percentage()">Submit</button>
+    </main>
+</body>
+<script>
+    const percentage=()=>{
+        let male=document.querySelector('#male-name').value;
+        let female=document.querySelector('#female-name').value
+        if(male && female){
+            let random=Math.floor(Math.random()*100)
+            let str=male+female
+            let coupleStr=localStorage.getItem(str)
+            str=str.toLowerCase()
+            console.log(str,coupleStr);
+            if(!coupleStr){
+                document.querySelector('.result').innerHTML=random+'%'
+                localStorage.setItem(str,random)
+            }else{
+                document.querySelector('.result').innerHTML=coupleStr+"%"
+            }
+        }else{
+            alert("fill both partners name feilds")
+        }
+    }
+</script>
+</html>
